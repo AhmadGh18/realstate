@@ -24,8 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $name, $lname, $email, $phone, $role, $password);
 
     if ($stmt->execute()) {
-        // User registration successful, you can redirect to a login page or any other page
-        header("Location: index.php");
+        header("Location: login.php");
         exit();
     } else {
         // Registration failed, redirect back to signup with an error message

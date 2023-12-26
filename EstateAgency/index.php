@@ -45,81 +45,78 @@
         </div>
         <span class="close-box-collapse right-boxed ion-ios-close"></span>
         <div class="box-collapse-wrap form">
-            <form class="form-a">
+            <form class="form-a" action="handlefilter.php" method="post">
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="form-group">
-                            <label for="Type">Keyword</label>
-                            <input type="text" class="form-control form-control-lg form-control-a"
+                            <label for="keyword">Keyword</label>
+                            <input name="keyword" type="text" class="form-control form-control-lg form-control-a"
                                 placeholder="Keyword">
                         </div>
                     </div>
                     <div class="col-md-6 mb-2">
                         <div class="form-group">
                             <label for="Type">Type</label>
-                            <select class="form-control form-control-lg form-control-a" id="Type">
-                                <option>All Type</option>
-                                <option>For Rent</option>
-                                <option>For Sale</option>
-                                <option>Open House</option>
+                            <select required name="Type" class="form-control form-control-lg form-control-a" id="Type">
+                                <option value="*">All Type</option>
+                                <option value="rent">For Rent</option>
+                                <option value="sale">For Sale</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6 mb-2">
                         <div class="form-group">
                             <label for="city">City</label>
-                            <select class="form-control form-control-lg form-control-a" id="city">
+                            <select required name="city" class="form-control form-control-lg form-control-a" id="city">
                                 <option>All City</option>
-                                <option>Alabama</option>
-                                <option>Arizona</option>
-                                <option>California</option>
-                                <option>Colorado</option>
+                                <?php
+                                include("connection.php");
+                                $sql = "SELECT DISTINCT location FROM realstate";
+                                $res = mysqli_query($conn, $sql);
+
+                                while ($row = mysqli_fetch_assoc($res)) {
+                                    echo '<option value="' . $row['location'] . '">' . $row['location'] . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
+
                     <div class="col-md-6 mb-2">
                         <div class="form-group">
                             <label for="bedrooms">Bedrooms</label>
-                            <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                                <option>Any</option>
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
+                            <select required name="bedrooms" class="form-control form-control-lg form-control-a"
+                                id="bedrooms">
+                                <option value="Any">Any</option>
+                                <option value="1">01</option>
+                                <option value="3">02</option>
+                                <option value="4+">3+</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="garages">Garages</label>
-                            <select class="form-control form-control-lg form-control-a" id="garages">
-                                <option>Any</option>
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
-                            </select>
-                        </div>
-                    </div>
+
                     <div class="col-md-6 mb-2">
                         <div class="form-group">
                             <label for="bathrooms">Bathrooms</label>
-                            <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                                <option>Any</option>
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
+                            <select required name="bathrooms" class="form-control form-control-lg form-control-a"
+                                id="bathrooms">
+                                <option value="">Any</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03+</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6 mb-2">
                         <div class="form-group">
                             <label for="price">Min Price</label>
-                            <select class="form-control form-control-lg form-control-a" id="price">
-                                <option>Unlimite</option>
-                                <option>$50,000</option>
-                                <option>$100,000</option>
-                                <option>$150,000</option>
-                                <option>$200,000</option>
+                            <select required name="price" class="form-control form-control-lg form-control-a"
+                                id="price">
+                                <option value="Unlimited">Unlimited</option>
+                                <option value="50000">$50,000</option>
+                                <option value="100000">$100,000</option>
+                                <option value="150000">$150,000</option>
+                                <option value="20000">$200,000+</option>
                             </select>
                         </div>
                     </div>
@@ -128,6 +125,7 @@
                     </div>
                 </div>
             </form>
+
         </div>
     </div>
     <!--/ Form Search End /-->
@@ -141,7 +139,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+            <a class="navbar-brand text-brand" href="index.php">Estate<span class="color-b">Agency</span></a>
             <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none"
                 data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
                 <span class="fa fa-search" aria-hidden="true"></span>
@@ -149,31 +147,20 @@
             <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link active" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about.php">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="property-grid.html">Property</a>
+                        <a class="nav-link" href="property-grid.php">Property</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog-grid.html">Blog</a>
+                        <a class="nav-link" href="mysaved.php">My saved</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="property-single.html">Property Single</a>
-                            <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-                            <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
-                            <a class="dropdown-item" href="agent-single.html">Agent Single</a>
-                        </div>
-                    </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -370,7 +357,7 @@
                             <h2 class="title-a">Latest Properties</h2>
                         </div>
                         <div class="title-link">
-                            <a href="property-grid.html">All Property
+                            <a href="property-grid.php">All Property
                                 <span class="ion-ios-arrow-forward"></span>
                             </a>
                         </div>
@@ -378,197 +365,62 @@
                 </div>
             </div>
             <div id="property-carousel" class="owl-carousel owl-theme">
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="img/property-6.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">206 Mount
-                                            <br /> Olive Road Two</a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">rent | $ 12.000</span>
-                                    </div>
-                                    <a href="#" class="link-a">Click here to view
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Area</h4>
-                                            <span>340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="img/property-3.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">157 West
-                                            <br /> Central Park</a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">rent | $ 12.000</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">Click here to view
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Area</h4>
-                                            <span>340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="img/property-7.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">245 Azabu
-                                            <br /> Nishi Park let</a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">rent | $ 12.000</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">Click here to view
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Area</h4>
-                                            <span>340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="img/property-10.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">204 Montal
-                                            <br /> South Bela Two</a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">rent | $ 12.000</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">Click here to view
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Area</h4>
-                                            <span>340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                $sql = "SELECT * FROM realstate ORDER BY date_posted LIMIT 5";
+                include("connection.php");
+                $res = mysqli_query($conn, $sql);
+
+                while ($row = mysqli_fetch_assoc($res)) {
+                    echo '<div class="carousel-item-b">';
+                    echo '<div class="card-box-a card-shadow">';
+                    echo '<div class="img-box-a">';
+                    echo '<img src="../frontend/' . $row["thumbnail"] . '" alt="" class="img-a img-fluid">';
+                    echo '</div>';
+                    echo '<div class="card-overlay">';
+                    echo '<div class="card-overlay-a-content">';
+                    echo '<div class="card-header-a">';
+                    echo '<h2 class="card-title-a">';
+                    echo '<a href="property-single.php">' . $row["location"] . '</a>';
+                    echo '</h2>';
+                    echo '</div>';
+                    echo '<div class="card-body-a">';
+                    echo '<div class="price-box d-flex">';
+                    echo '<span class="price-a">' . $row["forwhat"] . ' | $' . $row["price"] . '</span>';
+                    echo '</div>';
+                    echo '<a href="#" class="link-a">Click here to view';
+                    echo '<span class="ion-ios-arrow-forward"></span>';
+                    echo '</a>';
+                    echo '</div>';
+                    echo '<div class="card-footer-a">';
+                    echo '<ul class="card-info d-flex justify-content-around">';
+                    echo '<li>';
+                    echo '<h4 class="card-info-title">Area</h4>';
+                    echo '<span>' . $row["area"] . '<sup>2</sup></span>';
+                    echo '</li>';
+                    echo '<li>';
+                    echo '<h4 class="card-info-title">Beds</h4>';
+                    echo '<span>' . $row["bedrooms"] . '</span>';
+                    echo '</li>';
+                    echo '<li>';
+                    echo '<h4 class="card-info-title">Baths</h4>';
+                    echo '<span>' . $row["bathrooms"] . '</span>';
+                    echo '</li>';
+                    echo '<li>';
+                    echo '<h4 class="card-info-title">Kitchen</h4>';
+                    echo '<span>' . $row["kitchens"] . '</span>';
+                    echo '</li>';
+                    echo '</ul>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
             </div>
         </div>
     </section>
+
     <!--/ Property End /-->
 
     <!--/ Agents Star /-->
@@ -578,201 +430,91 @@
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
                         <div class="title-box">
-                            <h2 class="title-a">Best Agents</h2>
+                            <h2 class="title-a">Our Team</h2>
                         </div>
                         <div class="title-link">
-                            <a href="agents-grid.html">All Agents
+                            <a href="agents-grid.php">All Agents
                                 <span class="ion-ios-arrow-forward"></span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+            <style>
+            .prf {
+                height: 500px;
+                width: 600px;
+                /* Adjust the height as needed */
+                object-fit: cover;
+            }
+            </style>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card-box-d">
-                        <div class="card-img-d">
-                            <img src="img/agent-4.jpg" alt="" class="img-d img-fluid">
-                        </div>
-                        <div class="card-overlay card-overlay-hover">
-                            <div class="card-header-d">
-                                <div class="card-title-d align-self-center">
-                                    <h3 class="title-d">
-                                        <a href="agent-single.html" class="link-two">Margaret Sotillo
-                                            <br> Escala</a>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="card-body-d">
-                                <p class="content-d color-text-a">
-                                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                                </p>
-                                <div class="info-agents color-a">
-                                    <p>
-                                        <strong>Phone: </strong> +54 356 945234
-                                    </p>
-                                    <p>
-                                        <strong>Email: </strong> agents@example.com
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer-d">
-                                <div class="socials-footer d-flex justify-content-center">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-box-d">
-                        <div class="card-img-d">
-                            <img src="img/agent-1.jpg" alt="" class="img-d img-fluid">
-                        </div>
-                        <div class="card-overlay card-overlay-hover">
-                            <div class="card-header-d">
-                                <div class="card-title-d align-self-center">
-                                    <h3 class="title-d">
-                                        <a href="agent-single.html" class="link-two">Stiven Spilver
-                                            <br> Darw</a>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="card-body-d">
-                                <p class="content-d color-text-a">
-                                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                                </p>
-                                <div class="info-agents color-a">
-                                    <p>
-                                        <strong>Phone: </strong> +54 356 945234
-                                    </p>
-                                    <p>
-                                        <strong>Email: </strong> agents@example.com
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer-d">
-                                <div class="socials-footer d-flex justify-content-center">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-box-d">
-                        <div class="card-img-d">
-                            <img src="img/agent-5.jpg" alt="" class="img-d img-fluid">
-                        </div>
-                        <div class="card-overlay card-overlay-hover">
-                            <div class="card-header-d">
-                                <div class="card-title-d align-self-center">
-                                    <h3 class="title-d">
-                                        <a href="agent-single.html" class="link-two">Emma Toledo
-                                            <br> Cascada</a>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="card-body-d">
-                                <p class="content-d color-text-a">
-                                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                                </p>
-                                <div class="info-agents color-a">
-                                    <p>
-                                        <strong>Phone: </strong> +54 356 945234
-                                    </p>
-                                    <p>
-                                        <strong>Email: </strong> agents@example.com
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer-d">
-                                <div class="socials-footer d-flex justify-content-center">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#" class="link-one">
-                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                // Assuming you have a database connection established
+                include("connection.php");
+
+                // Query to retrieve user information from the database
+                $sql = "SELECT * FROM users limit 3";
+                $result = mysqli_query($conn, $sql);
+
+                // Check if there are rows in the result
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // Extract user information from the current row
+                        $firstName = $row['first_name'];
+                        $lastName = $row['last_name'];
+                        $email = $row['email'];
+                        $phone = $row['phone'];
+                        $role = $row['role'];
+
+                        echo ' <div class="col-md-4">';
+                        echo '<div class="card-box-d">';
+                        echo '<div class="card-img-d">';
+                        echo '<img src="../frontend/' . $row["profile_pic_url"] . '" alt="" class="img-d img-fluid prf">';
+                        echo '</div>';
+                        echo '<div class="card-overlay card-overlay-hover">';
+                        echo '<div class="card-header-d">';
+                        echo '<div class="card-title-d align-self-center">';
+                        echo '<h3 class="title-d">';
+                        echo '<a href="agent-single.php" class="link-two">' . $firstName . ' ' . $lastName . '</a>';
+                        echo '</h3>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="card-body-d">';
+                        echo '<p class="content-d color-text-a" style="font-size: 18px;">';
+                        echo "He/she is our " . $row["role"];
+                        echo '</p>';
+
+                        echo '<div class="info-agents color-a">';
+                        echo '<p>';
+                        echo '<strong>Phone: </strong>' . $phone;
+                        echo '</p>';
+                        echo '<p>';
+                        echo '<strong>Email: </strong>' . $email;
+                        echo '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="card-footer-d">';
+                        echo '<div class="socials-footer d-flex justify-content-center">';
+                        echo '<ul class="list-inline">';
+                        // Social media links are omitted
+                        echo '</ul>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "No users found in the database.";
+                }
+
+                // Close the database connection
+                mysqli_close($conn);
+                ?>
             </div>
+
+        </div>
         </div>
     </section>
     <!--/ Agents End /-->
@@ -784,10 +526,10 @@
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
                         <div class="title-box">
-                            <h2 class="title-a">Latest News</h2>
+                            <h2 class="title-a">Chepeast!</h2>
                         </div>
                         <div class="title-link">
-                            <a href="blog-grid.html">All News
+                            <a href="property-grid.php">All News
                                 <span class="ion-ios-arrow-forward"></span>
                             </a>
                         </div>
@@ -795,99 +537,43 @@
                 </div>
             </div>
             <div id="new-carousel" class="owl-carousel owl-theme">
+                <?php
+                $sql = "SELECT * FROM realstate ORDER BY price LIMIT 5";
+                include("connection.php");
+                $res = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_assoc($res)) {
+                ?>
                 <div class="carousel-item-c">
                     <div class="card-box-b card-shadow news-box">
                         <div class="img-box-b">
-                            <img src="img/post-2.jpg" alt="" class="img-b img-fluid">
+                            <img src="../frontend/<?= $row['thumbnail']; ?>" alt="" class="img-b img-fluid">
                         </div>
                         <div class="card-overlay">
+                            <div class="card-category-b">
+                                <a href="#" class="price"><?php echo $row["price"] . "$" ?></a>
+                            </div>
                             <div class="card-header-b">
+
                                 <div class="card-category-b">
-                                    <a href="#" class="category-b">House</a>
+                                    <a href="#" class="category-b"><?php echo $row["PropertyType"] ?></a>
                                 </div>
-                                <div class="card-title-b">
-                                    <h2 class="title-2">
-                                        <a href="blog-single.html">House is comming
-                                            <br> new</a>
-                                    </h2>
-                                </div>
+
                                 <div class="card-date">
-                                    <span class="date-b">18 Sep. 2017</span>
+                                    <span class="date-b"><?php echo $row["date_posted"] ?></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item-c">
-                    <div class="card-box-b card-shadow news-box">
-                        <div class="img-box-b">
-                            <img src="img/post-5.jpg" alt="" class="img-b img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-header-b">
-                                <div class="card-category-b">
-                                    <a href="#" class="category-b">Travel</a>
-                                </div>
-                                <div class="card-title-b">
-                                    <h2 class="title-2">
-                                        <a href="blog-single.html">Travel is comming
-                                            <br> new</a>
-                                    </h2>
-                                </div>
-                                <div class="card-date">
-                                    <span class="date-b">18 Sep. 2017</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-c">
-                    <div class="card-box-b card-shadow news-box">
-                        <div class="img-box-b">
-                            <img src="img/post-7.jpg" alt="" class="img-b img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-header-b">
-                                <div class="card-category-b">
-                                    <a href="#" class="category-b">Park</a>
-                                </div>
-                                <div class="card-title-b">
-                                    <h2 class="title-2">
-                                        <a href="blog-single.html">Park is comming
-                                            <br> new</a>
-                                    </h2>
-                                </div>
-                                <div class="card-date">
-                                    <span class="date-b">18 Sep. 2017</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-c">
-                    <div class="card-box-b card-shadow news-box">
-                        <div class="img-box-b">
-                            <img src="img/post-3.jpg" alt="" class="img-b img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-header-b">
-                                <div class="card-category-b">
-                                    <a href="#" class="category-b">Travel</a>
-                                </div>
-                                <div class="card-title-b">
-                                    <h2 class="title-2">
-                                        <a href="#">Travel is comming
-                                            <br> new</a>
-                                    </h2>
-                                </div>
-                                <div class="card-date">
-                                    <span class="date-b">18 Sep. 2017</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
+            <style>
+            .price {
+                background-color: white;
+                margin: 10px;
+                font-size: 23px;
+            }
+            </style>
         </div>
     </section>
     <!--/ News End /-->
@@ -899,7 +585,7 @@
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
                         <div class="title-box">
-                            <h2 class="title-a">Testimonials</h2>
+                            <h2 class="title-a">Some reviews</h2>
                         </div>
                     </div>
                 </div>
@@ -908,63 +594,57 @@
                 <div class="carousel-item-a">
                     <div class="testimonials-box">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="testimonial-img">
-                                    <img src="img/testimonial-1.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="testimonial-ico">
-                                    <span class="ion-ios-quote"></span>
-                                </div>
-                                <div class="testimonials-content">
-                                    <p class="testimonial-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea
-                                        nam praesentium
-                                        debitis hic ber quibusdam
-                                        voluptatibus officia expedita corpori.
-                                    </p>
-                                </div>
-                                <div class="testimonial-author-box">
-                                    <img src="img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
-                                    <h5 class="testimonial-author">Albert & Erika</h5>
-                                </div>
-                            </div>
+                            <?php
+                            $sql = "SELECT * FROM reviews where subject = 'review' ";
+                            $res = mysqli_query($conn, $sql);
+
+                            while ($row = mysqli_fetch_array($res)) {
+                                echo '<div class="col-sm-12 col-md-6">';
+                                echo '  <div class="testimonial-box">';
+                                echo '      <div class="testimonial-img">';
+                                echo '          <span class="name">' . $row['Full_name'] . '</span>';
+                                echo '          <p class="message">' . $row['Message'] . '</p>';
+                                echo '      </div>';
+                                echo '  </div>';
+                                echo '</div>';
+                            }
+                            ?>
                         </div>
+
                     </div>
                 </div>
-                <div class="carousel-item-a">
-                    <div class="testimonials-box">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="testimonial-img">
-                                    <img src="img/testimonial-2.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="testimonial-ico">
-                                    <span class="ion-ios-quote"></span>
-                                </div>
-                                <div class="testimonials-content">
-                                    <p class="testimonial-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea
-                                        nam praesentium
-                                        debitis hic ber quibusdam
-                                        voluptatibus officia expedita corpori.
-                                    </p>
-                                </div>
-                                <div class="testimonial-author-box">
-                                    <img src="img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
-                                    <h5 class="testimonial-author">Pablo & Emma</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
     <!--/ Testimonials End /-->
+    <style>
+    .testimonial-box {
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-img {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .testimonial-img .name {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+        color: #007bff;
+        /* Blue color for the name */
+    }
+
+    .testimonial-img .message {
+        font-style: italic;
+        line-height: 1.4;
+    }
+    </style>
 
     <!--/ footer Star /-->
     <section class="section-footer">
@@ -985,10 +665,16 @@
                         <div class="w-footer-a">
                             <ul class="list-unstyled">
                                 <li class="color-a">
-                                    <span class="color-text-a">Phone .</span> contact@example.com
+                                    <?php
+                                    include("connection.php");
+                                    $sql = "select * from company limit 1";
+                                    $res = mysqli_query($conn, $sql);
+                                    $data = mysqli_fetch_assoc($res);
+                                    ?>
+                                    <span class="color-text-a">Phone .</span> <?php echo $data["phone_Number"] ?>
                                 </li>
                                 <li class="color-a">
-                                    <span class="color-text-a">Email .</span> +54 356 945234
+                                    <span class="color-text-a">Email </span> <?php echo $data["Email"] ?>
                                 </li>
                             </ul>
                         </div>
@@ -1034,17 +720,17 @@
 
                             <ul class="list-unstyled">
                                 <?php
-include("connection.php");
+                                include("connection.php");
 
-$sql = "SELECT * FROM locations";
-$res = mysqli_query($conn, $sql);
+                                $sql = "SELECT * FROM locations";
+                                $res = mysqli_query($conn, $sql);
 
-while ($data = mysqli_fetch_assoc($res)) {
-    echo '<li class="item-list-a">';
-    echo '<i class="fa fa-angle-right"></i> <a href="#">' . $data['name'] . '</a>';
-    echo '</li>';
-}
-?>
+                                while ($data = mysqli_fetch_assoc($res)) {
+                                    echo '<li class="item-list-a">';
+                                    echo '<i class="fa fa-angle-right"></i> <a href="#">' . $data['name'] . '</a>';
+                                    echo '</li>';
+                                }
+                                ?>
 
 
 
@@ -1129,7 +815,6 @@ while ($data = mysqli_fetch_assoc($res)) {
     <!--/ Footer End /-->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <div id="preloader"></div>
 
     <!-- JavaScript Libraries -->
     <script src="lib/jquery/jquery.min.js"></script>

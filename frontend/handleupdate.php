@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST['status'];
     $propertyType = $_POST['PropertyType'];
     $options = implode(',', $_POST['options']); // Convert options array to comma-separated string
-
+    $forwhat = $_POST['forwhat'];
     // Update real estate information
     $updateSql = "UPDATE realstate SET 
         title = '$title', 
@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         area = '$area', 
         status = '$status', 
         PropertyType = '$propertyType', 
-        options = '$options'
+        options = '$options',
+        forwhat='$forwhat'
         WHERE id = $realstateId";
 
     $updateResult = mysqli_query($conn, $updateSql);

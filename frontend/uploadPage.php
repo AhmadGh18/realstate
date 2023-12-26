@@ -151,6 +151,11 @@
 
         <label for="area">Area:</label>
         <input type="text" id="area" name="area" required>
+        <label for="rent">For </label>
+        <select id="rent" name="forwhat" required>
+            <option value="rent">rent</option>
+            <option value="sale">sale</option>
+        </select>
 
         <label for="status">Status:</label>
         <select id="status" name="status" required>
@@ -162,6 +167,8 @@
         <select id="propertyType" name="PropertyType" required>
             <option value="apartment">Apartment</option>
             <option value="house">House</option>
+            <option value="school">school</option>
+
             <!-- Add more options as needed -->
         </select>
 
@@ -183,6 +190,38 @@
                 <input type="checkbox" id="cinema" name="options[]" value="cinema">
                 <label for="cinema">Cinema</label>
             </div>
+            <div>
+                <input type="checkbox" id="cinema" name="options[]" value="indoor gym">
+                <label for="gym">Indoor gym</label>
+            </div>
+            <div>
+                <input type="checkbox" id="duplex" name="options[]" value="Duplex">
+
+                <label for="duplex">Duplex</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="triplex" name="options[]" value="Triplex">
+
+                <label for="triplex">Triplex</label>
+            </div>
+
+
+            <div>
+                <input type="checkbox" id="shopping_center" name="options[]" value="Shopping Center">
+
+                <label for="shopping_center">Shopping Center</label>
+
+            </div>
+            <div>
+                <input type="checkbox" id="theater" name="options[]" value="Theater">
+
+                <label for="theater">Theater</label>
+            </div>
+
+
+
+
         </div>
 
         <label for="image">Thumbnail Image:</label>

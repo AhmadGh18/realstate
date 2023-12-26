@@ -17,11 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST["price"];
     $datePosted = date("Y-m-d H:i:s");
     $propertyType = $_POST['PropertyType'];
+    $forwhat = $_POST['forwhat'];
 
     $options = implode(",", $_POST["options"]);
 
-    $sql = "INSERT INTO realstate (title, location, description, bedrooms, bathrooms, kitchens, area, status, PropertyType, price, date_posted, options)
-            VALUES ('$title', '$location', '$description', '$bedrooms', '$bathrooms', '$kitchens', '$area', '$status', '$propertyType', '$price', '$datePosted', '$options')";
+    $sql = "INSERT INTO realstate (title, location, description, bedrooms, bathrooms, kitchens, area, status, PropertyType, price, date_posted, options,forwhat)
+            VALUES ('$title', '$location', '$description', '$bedrooms', '$bathrooms', '$kitchens', '$area', '$status', '$propertyType', '$price', '$datePosted', '$options','$forwhat')";
 
     if ($conn->query($sql) === TRUE) {
         $realEstateId = $conn->insert_id;

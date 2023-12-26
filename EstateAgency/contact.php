@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>EstateAgency Bootstrap Template</title>
@@ -133,50 +134,46 @@
   <!--/ Nav Star /-->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
-      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <a class="navbar-brand text-brand" href="index.php">Estate<span class="color-b">Agency</span></a>
+      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
       </button>
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="property-grid.html">Property</a>
+            <a class="nav-link" href="property-grid.php">Property</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="blog-grid.html">Blog</a>
+            <a class="nav-link" href="mysaved.php">My saved</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Pages
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="property-single.html">Property Single</a>
-              <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-              <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
-              <a class="dropdown-item" href="agent-single.html">Agent Single</a>
+              <a class="dropdown-item" href="property-single.php">Property Single</a>
+              <a class="dropdown-item" href="blog-single.php">Blog Single</a>
+              <a class="dropdown-item" href="agents-grid.php">Agents Grid</a>
+              <a class="dropdown-item" href="agent-single.php">Agent Single</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="contact.html">Contact</a>
+            <a class="nav-link active" href="contact.php">Contact</a>
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
       </button>
     </div>
@@ -189,15 +186,16 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Contact US</h1>
-            <span class="color-text-a">Aut voluptas consequatur unde sed omnis ex placeat quis eos. Aut natus officia corrupti qui autem fugit consectetur quo. Et ipsum eveniet laboriosam voluptas beatae possimus qui ducimus. Et voluptatem deleniti. Voluptatum voluptatibus amet. Et esse sed omnis inventore hic culpa.</span>
+            <h1 class="title-single">Report a problem / review </h1>
+            <span class="color-text-a">Fell free to ask us a question . report a problem add a review about
+              your expercincse</span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
           <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="index.php">Home</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Contact
@@ -217,15 +215,14 @@
         <div class="col-sm-12">
           <div class="contact-map box">
             <div id="map" class="contact-map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834"
-                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
         <div class="col-sm-12 section-t8">
           <div class="row">
             <div class="col-md-7">
-              <form class="form-a contactForm" action="" method="post" role="form">
+              <form class="form-a contactForm" action="handleAddreview.php" method="post" role="form">
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
                 <div class="row">
@@ -243,8 +240,14 @@
                   </div>
                   <div class="col-md-12 mb-3">
                     <div class="form-group">
-                      <input type="url" name="subject" class="form-control form-control-lg form-control-a" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                      <div class="validation"></div>
+                      <select name="subject" class="form-control form-control-lg form-control-a">
+                        <option value="question">Question</option>
+                        <option value="review">Review</option>
+
+                      </select>
+                      <div class="validation">
+
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-12 mb-3">
@@ -253,6 +256,7 @@
                       <div class="validation"></div>
                     </div>
                   </div>
+
                   <div class="col-md-12">
                     <button type="submit" class="btn btn-a">Send Message</button>
                   </div>
@@ -268,12 +272,19 @@
                   <div class="icon-box-title">
                     <h4 class="icon-title">Say Hello</h4>
                   </div>
+                  <?php
+                  include("connection.php");
+
+                  $sql = "select * from company";
+                  $res = mysqli_query($conn, $sql);
+                  $data = mysqli_fetch_assoc($res);
+                  ?>
                   <div class="icon-box-content">
                     <p class="mb-1">Email.
-                      <span class="color-a">contact@example.com</span>
+                      <span class="color-a"><?php echo $data['Email'] ?></span>
                     </p>
                     <p class="mb-1">Phone.
-                      <span class="color-a">+54 356 945234</span>
+                      <span class="color-a"><?php echo $data['phone_Number'] ?></span>
                     </p>
                   </div>
                 </div>
@@ -288,8 +299,20 @@
                   </div>
                   <div class="icon-box-content">
                     <p class="mb-1">
-                      Manhattan, Nueva York 10036,
-                      <br> EE. UU.
+                      <?php
+                      $sql = "select * from locations";
+                      $res = mysqli_query($conn, $sql);
+                      echo "<ul>";
+                      while ($row = mysqli_fetch_assoc($res)) {
+                        echo "<li>";
+
+                        echo $row['name'];
+                        echo "</li>";
+                      }
+                      echo "</ul>";
+                      ?>
+
+
                     </p>
                   </div>
                 </div>
@@ -354,16 +377,19 @@
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo
+                consequat duis
                 sed aute irure.
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                  <span class="color-text-a">Phone .</span> contact@example.com
+                </li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +54 356 945234</li>
+                  <span class="color-text-a">Email .</span> +54 356 945234
+                </li>
               </ul>
             </div>
           </div>
@@ -522,4 +548,5 @@
   <script src="js/main.js"></script>
 
 </body>
+
 </html>

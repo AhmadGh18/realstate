@@ -7,30 +7,30 @@
     <title>Real Estate Details</title>
     <link rel="stylesheet" href="font.css">
     <style>
-        /* Add your CSS styling here */
-        .real-estate-details {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
+    /* Add your CSS styling here */
+    .real-estate-details {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
 
-        .image-container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
+    .image-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
 
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
 
-        .descimg {
-            height: 200px !important;
-            width: 200px;
+    .descimg {
+        height: 200px !important;
+        width: 200px;
 
-        }
+    }
     </style>
 </head>
 
@@ -68,6 +68,7 @@
         $options = $realstateData['options'];
         $thumbnail = $realstateData['thumbnail'];
         $datePosted = $realstateData['date_posted'];
+        $forwhat=$realstateData['forwhat'];
 
         // Display real estate details
         echo "<div class='real-estate-details'>";
@@ -84,6 +85,8 @@
         echo "<p><strong>Options:</strong> $options</p>";
         echo "<img src='$thumbnail' alt='Real Estate Thumbnail'>";
         echo "<p><strong>Date Posted:</strong> $datePosted</p>";
+        echo "<p><strong>For:</strong> $forwhat</p>";
+
         echo "</div>";
 
         // Display images
