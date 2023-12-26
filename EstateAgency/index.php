@@ -45,7 +45,7 @@
         </div>
         <span class="close-box-collapse right-boxed ion-ios-close"></span>
         <div class="box-collapse-wrap form">
-            <form class="form-a" action="handlefilter.php" method="post">
+            <form class="form-a" action="handlefilter.php" method="get">
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="form-group">
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label for="Type">Type</label>
                             <select required name="Type" class="form-control form-control-lg form-control-a" id="Type">
-                                <option value="*">All Type</option>
+                                <option value="all">All Type</option>
                                 <option value="rent">For Rent</option>
                                 <option value="sale">For Sale</option>
                             </select>
@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <label for="city">City</label>
                             <select required name="city" class="form-control form-control-lg form-control-a" id="city">
-                                <option>All City</option>
+                                <option value="all">All City</option>
                                 <?php
                                 include("connection.php");
                                 $sql = "SELECT DISTINCT location FROM realstate";
@@ -103,7 +103,7 @@
                                 <option value="">Any</option>
                                 <option value="1">01</option>
                                 <option value="2">02</option>
-                                <option value="3">03+</option>
+                                <option value="3+">03+</option>
                             </select>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                         <a class="nav-link active" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="login.php">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="property-grid.php">Property</a>
@@ -273,23 +273,12 @@
                             <div class="card-box-ico">
                                 <span class="fa fa-gamepad"></span>
                             </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c">Lifestyle</h2>
-                            </div>
+
                         </div>
                         <div class="card-body-c">
-                            <p class="content-c">
-                                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien
-                                massa,
-                                convallis a pellentesque
-                                nec, egestas non nisi.
-                            </p>
+
                         </div>
-                        <div class="card-footer-c">
-                            <a href="#" class="link-c link-icon">Read more
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -303,18 +292,9 @@
                             </div>
                         </div>
                         <div class="card-body-c">
-                            <p class="content-c">
-                                Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit.
-                                Mauris blandit
-                                aliquet elit, eget tincidunt
-                                nibh pulvinar a.
-                            </p>
+
                         </div>
-                        <div class="card-footer-c">
-                            <a href="#" class="link-c link-icon">Read more
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -324,22 +304,13 @@
                                 <span class="fa fa-home"></span>
                             </div>
                             <div class="card-title-c align-self-center">
-                                <h2 class="title-c">Sell</h2>
+                                <h2 class="title-c">Buy</h2>
                             </div>
                         </div>
                         <div class="card-body-c">
-                            <p class="content-c">
-                                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien
-                                massa,
-                                convallis a pellentesque
-                                nec, egestas non nisi.
-                            </p>
+
                         </div>
-                        <div class="card-footer-c">
-                            <a href="#" class="link-c link-icon">Read more
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -387,7 +358,7 @@
                     echo '<div class="price-box d-flex">';
                     echo '<span class="price-a">' . $row["forwhat"] . ' | $' . $row["price"] . '</span>';
                     echo '</div>';
-                    echo '<a href="#" class="link-a">Click here to view';
+                    echo '<a href="property-single.php?id=' . $row["id"] . '" class="link-a">Click here to view';
                     echo '<span class="ion-ios-arrow-forward"></span>';
                     echo '</a>';
                     echo '</div>';
@@ -433,7 +404,7 @@
                             <h2 class="title-a">Our Team</h2>
                         </div>
                         <div class="title-link">
-                            <a href="agents-grid.php">All Agents
+                            <a href="agents-grid.php">All employee
                                 <span class="ion-ios-arrow-forward"></span>
                             </a>
                         </div>
@@ -529,7 +500,7 @@
                             <h2 class="title-a">Chepeast!</h2>
                         </div>
                         <div class="title-link">
-                            <a href="property-grid.php">All News
+                            <a href="property-grid.php">All
                                 <span class="ion-ios-arrow-forward"></span>
                             </a>
                         </div>
@@ -657,9 +628,14 @@
                         </div>
                         <div class="w-body-a">
                             <p class="w-text-a color-text-a">
-                                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo
-                                consequat duis
-                                sed aute irure.
+                                <?php
+                                include("connection.php");
+                                $sql = "select * from company limit 1";
+                                $res = mysqli_query($conn, $sql);
+                                $data = mysqli_fetch_assoc($res);
+                                echo $data["bio"];
+                                ?>
+
                             </p>
                         </div>
                         <div class="w-footer-a">
@@ -748,19 +724,17 @@
                     <nav class="nav-footer">
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a href="#">Home</a>
+                                <a href="index.php">Home</a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="mysaved.php">My Property</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#">About</a>
+                                <a href="property-grid.php">All estate</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#">Property</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Blog</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Contact</a>
+                                <a href="contact.php">Contact</a>
                             </li>
                         </ul>
                     </nav>

@@ -79,7 +79,7 @@
 	                            </div>
 	                        </form>
 
-	                        <div class="auth-option text-center pt-5">Add an employee <a class="text-link"
+	                        <div class="auth-option text-center pt-5">Create account <a class="text-link"
 	                                href="signup.php">here</a>.</div>
 	                    </div>
 	                    <!--//auth-form-container-->

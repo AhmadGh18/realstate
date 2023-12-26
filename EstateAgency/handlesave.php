@@ -1,11 +1,12 @@
 <?php
 session_start();
 include("connection.php");
-
+if (!isset($_SESSION['user_id'])) {
+    header("location:login.php");
+}
 // Get the realstate ID from the URL parameter
 $id = $_GET['id'];
 
-// Get the user ID from the session
 $userId = $_SESSION['user_id'];
 
 // Check if the user has already saved this item

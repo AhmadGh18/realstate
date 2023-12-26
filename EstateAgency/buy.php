@@ -1,4 +1,11 @@
 <?php
+
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("location:login.php");
+}
+
 $id = $_GET["id"];
 include("connection.php");
 $sql = "select * from transaction where realstateId ='$id' and ispaid= 'yes'";

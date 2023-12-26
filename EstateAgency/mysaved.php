@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("location:login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,15 +24,14 @@
 </head>
 
 <style>
-    .gg {
-        margin: 20px;
-    }
+.gg {
+    margin: 20px;
+}
 </style>
 
 <body>
 
     <?php
-    session_start();
     include("connection.php");
 
     // Assuming you have a session or user authentication in place
@@ -86,10 +94,10 @@
         echo '    </div>';
         echo '</div>';
     ?>
-        <form action="removefromsave.php" method="get">
-            <input type="hidden" name="real_estate_id" value="<?php echo $row["id"]; ?>">
-            <button class="btn btn-primary" type="submit">Remove from saved</button>
-        </form>
+    <form action="removefromsave.php" method="get">
+        <input type="hidden" name="real_estate_id" value="<?php echo $row["id"]; ?>">
+        <button class="btn btn-primary" type="submit">Remove from saved</button>
+    </form>
 
     <?php
     }

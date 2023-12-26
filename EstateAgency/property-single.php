@@ -63,80 +63,74 @@ if (!isset($_GET["id"])) {
     </div>
     <span class="close-box-collapse right-boxed ion-ios-close"></span>
     <div class="box-collapse-wrap form">
-      <form class="form-a">
+      <form class="form-a" action="handlefilter.php" method="get">
         <div class="row">
           <div class="col-md-12 mb-2">
             <div class="form-group">
-              <label for="Type">Keyword</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+              <label for="keyword">Keyword</label>
+              <input name="keyword" type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="Type">Type</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option>All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
+              <select required name="Type" class="form-control form-control-lg form-control-a" id="Type">
+                <option value="all">All Type</option>
+                <option value="rent">For Rent</option>
+                <option value="sale">For Sale</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="city">City</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
+              <select required name="city" class="form-control form-control-lg form-control-a" id="city">
+                <option value="all">All City</option>
+                <?php
+                include("connection.php");
+                $sql = "SELECT DISTINCT location FROM realstate";
+                $res = mysqli_query($conn, $sql);
+
+                while ($row = mysqli_fetch_assoc($res)) {
+                  echo '<option value="' . $row['location'] . '">' . $row['location'] . '</option>';
+                }
+                ?>
               </select>
             </div>
           </div>
+
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <select required name="bedrooms" class="form-control form-control-lg form-control-a" id="bedrooms">
+                <option value="Any">Any</option>
+                <option value="1">01</option>
+                <option value="3">02</option>
+                <option value="4+">3+</option>
               </select>
             </div>
           </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-              </select>
-            </div>
-          </div>
+
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <select required name="bathrooms" class="form-control form-control-lg form-control-a" id="bathrooms">
+                <option value="">Any</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3+">03+</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
+              <select required name="price" class="form-control form-control-lg form-control-a" id="price">
+                <option value="Unlimited">Unlimited</option>
+                <option value="50000">$50,000</option>
+                <option value="100000">$100,000</option>
+                <option value="150000">$150,000</option>
+                <option value="20000">$200,000+</option>
               </select>
             </div>
           </div>
@@ -165,16 +159,13 @@ if (!isset($_GET["id"])) {
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
+            <a class="nav-link active" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="property-grid.php">Property</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog-grid.php">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="mysaved.php">My saved</a>
@@ -317,7 +308,7 @@ if (!isset($_GET["id"])) {
                     <span><?php echo $res['location'] ?></span>
                   </li>
                   <li class="d-flex justify-content-between">
-                    <strong>Property Type:</strong>
+                    <strong>Property:</strong>
                     <span><?php echo $res['PropertyType'] ?></span>
                   </li>
                   <li class="d-flex justify-content-between">
@@ -438,9 +429,14 @@ if (!isset($_GET["id"])) {
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo
-                consequat duis
-                sed aute irure.
+                <?php
+                include("connection.php");
+                $sql = "select * from company limit 1";
+                $res = mysqli_query($conn, $sql);
+                $data = mysqli_fetch_assoc($res);
+                echo $data["bio"];
+                ?>
+
               </p>
             </div>
             <div class="w-footer-a">
@@ -460,39 +456,8 @@ if (!isset($_GET["id"])) {
               </ul>
             </div>
           </div>
+        </div>
 
-        </div>
-        <div class="col-sm-12 col-md-4 section-md-t3">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">The Company</h3>
-            </div>
-            <div class="w-body-a">
-              <div class="w-body-a">
-                <ul class="list-unstyled">
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
@@ -518,13 +483,10 @@ if (!isset($_GET["id"])) {
 
               </ul>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-    <!-- Assuming you have a real estate post with a unique identifier $postId -->
-
   </section>
   <footer>
     <div class="container">
@@ -533,19 +495,17 @@ if (!isset($_GET["id"])) {
           <nav class="nav-footer">
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="#">Home</a>
+                <a href="index.php">Home</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="mysaved.php">My Property</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">About</a>
+                <a href="property-grid.php">All estate</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Property</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Blog</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Contact</a>
+                <a href="contact.php">Contact</a>
               </li>
             </ul>
           </nav>

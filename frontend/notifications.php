@@ -407,21 +407,15 @@
             <i class="search-mobile-trigger-icon fa-solid fa-magnifying-glass"></i>
         </div>
         <!--//col-->
-        <div class="app-search-box col">
-            <form class="app-search-form">
-                <input type="text" placeholder="Search..." name="search" class="form-control search-input">
-                <button type="submit" class="btn search-btn btn-primary" value="Search"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-        </div>
+
         <?php
-		include("connection.php");
+        include("connection.php");
 
-		$sql = "SELECT * FROM users";
-		$result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM users";
+        $result = mysqli_query($conn, $sql);
 
-		if ($result) {
-			echo "<table border='1'>
+        if ($result) {
+            echo "<table border='1'>
             <tr>
                 <th>ID</th>
                 <th>First Name</th>
@@ -436,8 +430,8 @@
                 <!-- Add more columns as needed -->
             </tr>";
 
-			while ($row = mysqli_fetch_assoc($result)) {
-				echo "<tr>
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>
                 <td>{$row['id']}</td>
                 <td>{$row['first_name']}</td>
                 <td>" . ($row['last_name'] ? $row['last_name'] : 'Not set') . "</td>
@@ -450,15 +444,15 @@
 
 
             </tr>";
-			}
+            }
 
-			echo "</table>";
-		} else {
-			echo "Error executing the query: " . mysqli_error($conn);
-		}
+            echo "</table>";
+        } else {
+            echo "Error executing the query: " . mysqli_error($conn);
+        }
 
-		mysqli_close($conn);
-		?>
+        mysqli_close($conn);
+        ?>
 
         <!--//container-fluid-->
     </div>
@@ -468,32 +462,6 @@
         <!-- Table will be displayed here -->
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        // Attach a keyup event to the search input
-        $('#searchInput').on('keyup', function() {
-            // Get the search term
-            var searchTerm = $(this).val();
-
-            // Send an AJAX request to the server
-            $.ajax({
-                type: 'GET',
-                url: 'search.php', // Replace with the actual URL of your search script
-                data: {
-                    search: searchTerm
-                },
-                success: function(response) {
-                    // Update the resultTable div with the response from the server
-                    $('#resultTable').html(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                }
-            });
-        });
-    });
-    </script>
 
 
 

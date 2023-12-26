@@ -21,12 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Check if the hashed password matches
         if (password_verify($password, $hashedPassword)) {
+            $_SESSION['role'] = $row['role'];
+
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['lname'] = $row['last_name'];
 
             $_SESSION['email'] = $row['email'];
             $_SESSION['id'] = $row['id'];
-            $_SESSION['role'] = $row['role'];
             header("Location: index.php");
             exit();
         } else {

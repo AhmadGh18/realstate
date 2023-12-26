@@ -24,7 +24,8 @@
 
     // Insert into the transaction table
     $sql_transaction = "INSERT INTO transaction (clientid, realstateid, ispaid, amount, date_of_transaction) 
-                    VALUES ('$client_id', '$id', 'yes', '$amount', NOW())";
+    VALUES ('$client_id', '$id', 'yes', '" . ($amount + 1000) . "', NOW())";
+
     mysqli_query($conn, $sql_transaction);
 
     // Redirect or perform additional actions as needed

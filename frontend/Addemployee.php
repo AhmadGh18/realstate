@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if ($_SESSION["role"] != "admin") {
+    header("location: index.php");
+    exit(); // It's a good practice to add exit() after a header redirect to ensure that no further code is executed.
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +36,7 @@
         <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
             <div class="d-flex flex-column align-content-end">
                 <div class="app-auth-body mx-auto">
-                    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.php"><img class="logo-icon me-2"
-                                src="assets/images/app-logo.svg" alt="logo"></a></div>
+                    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.php"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
                     <h2 class="auth-heading text-center mb-4">Sign up to Portal</h2>
 
                     <div class="auth-form-container text-start mx-auto">
@@ -40,41 +49,33 @@
 
                             <div class="email mb-3">
                                 <label class="sr-only" for="signup-email">first Name</label>
-                                <input id="signup-name" name="signup-name" type="text" class="form-control signup-name"
-                                    placeholder="first name" required="required">
+                                <input id="signup-name" name="signup-name" type="text" class="form-control signup-name" placeholder="first name" required="required">
                             </div>
                             <div class="email mb-3">
                                 <label class="sr-only" for="signup-email">Last Name</label>
-                                <input id="signup-name" name="signup-Lastname" type="text"
-                                    class="form-control signup-name" placeholder="Last name" required="required">
+                                <input id="signup-name" name="signup-Lastname" type="text" class="form-control signup-name" placeholder="Last name" required="required">
                             </div>
                             <div class="email mb-3">
                                 <label class="sr-only" for="signup-email">Phone Number</label>
-                                <input id="signup-name" name="phone" type="text" class="form-control signup-name"
-                                    placeholder="Phone number" required="required">
+                                <input id="signup-name" name="phone" type="text" class="form-control signup-name" placeholder="Phone number" required="required">
                             </div>
                             <div class="email mb-3">
                                 <label class="sr-only" for="signup-email">Your Email</label>
-                                <input id="signup-email" name="signup-email" type="email"
-                                    class="form-control signup-email" placeholder="Email" required="required">
+                                <input id="signup-email" name="signup-email" type="email" class="form-control signup-email" placeholder="Email" required="required">
                             </div>
                             <div class="email mb-3">
                                 <label class="sr-only" for="signup-postion">Position</label>
-                                <input id="signup-position" name="role" type="text" class="form-control signup-email"
-                                    placeholder="role" required="required">
+                                <input id="signup-position" name="role" type="text" class="form-control signup-email" placeholder="role" required="required">
                             </div>
                             <div class="password mb-3">
                                 <label class="sr-only" for="signup-password">Password</label>
-                                <input id="signup-password" name="signup-password" type="password"
-                                    class="form-control signup-password" placeholder="Create a password"
-                                    required="required">
+                                <input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="Create a password" required="required">
                             </div>
                             <div class="extra mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="RememberPassword">
                                     <label class="form-check-label" for="RememberPassword">
-                                        I agree to Portal's <a href="#" class="app-link">Terms of Service</a> and <a
-                                            href="#" class="app-link">Privacy Policy</a>.
+                                        I agree to Portal's <a href="#" class="app-link">Terms of Service</a> and <a href="#" class="app-link">Privacy Policy</a>.
                                     </label>
                                 </div>
                             </div>
@@ -87,8 +88,7 @@
                         </form>
                         <!--//auth-form-->
 
-                        <div class="auth-option text-center pt-5">Already have an account? <a class="text-link"
-                                href="login.php">Log in</a></div>
+                        <div class="auth-option text-center pt-5">Already have an account? <a class="text-link" href="login.php">Log in</a></div>
                     </div>
                     <!--//auth-form-container-->
 
@@ -100,9 +100,7 @@
                 <footer class="app-auth-footer">
                     <div class="container text-center py-3">
                         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-                        <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"
-                                style="color: #fb866a;"></i> by <a class="app-link"
-                                href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for
+                        <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for
                             developers</small>
 
                     </div>
@@ -122,8 +120,7 @@
                     <div class="overlay-content p-3 p-lg-4 rounded">
                         <h5 class="mb-3 overlay-title">Explore Portal Admin Template</h5>
                         <div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the
-                            template license <a
-                                href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.
+                            template license <a href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.
                         </div>
                     </div>
                 </div>
